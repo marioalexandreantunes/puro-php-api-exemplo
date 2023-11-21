@@ -92,6 +92,22 @@ foreach($data['forecast']['forecastday'] as $day){
         </div>
     </div>
 
+    <div class="container">
+        <form class="row g-3 justify-content-center" action="theme.php" method="post">
+            <div class="col-auto">
+                <select class="form-select" name="theme">
+                    <option value="dark" <?php if( $_COOKIE["theme"] == "dark" ) { echo " selected"; } ?>>Dark
+                    </option>
+                    <option value="light" <?php if( $_COOKIE["theme"] == "light" ) { echo " selected"; } ?>>Light
+                    </option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <input class="btn btn-secondary" type="submit" value="Select theme">
+            </div>
+        </form>
+    </div>
+
 </body>
 
 </html>
