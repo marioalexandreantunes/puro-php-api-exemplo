@@ -3,6 +3,10 @@
 require_once '../inc/config.php';
 require_once '../inc/api.php';
 
+$cookie_name = "theme";
+$cookie_value = "dark";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+  
 $days = 5;
 $city = "Lisbon";
 
@@ -41,7 +45,7 @@ foreach($data['forecast']['forecastday'] as $day){
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="<?= $_COOKIE["theme"] ?>">
 
 <head>
     <meta charset="utf-8">
@@ -57,7 +61,7 @@ foreach($data['forecast']['forecastday'] as $day){
         <hr>
         <div class="row m-3 justify-content-center text-center">
             <p class="display-6 fw-lighter">agora</p>
-            <div class="col-3 border border-primary rounded-1 text-center p-3">
+            <div class="col-sm-3 border border-primary rounded-1 text-center p-3">
                 <img src="<?= $current['condition_icon']?>" alt="">
                 <p class="fw-lighter"><?= $location['current_time']?></p>
                 <hr class="mx-5">
@@ -65,10 +69,10 @@ foreach($data['forecast']['forecastday'] as $day){
                 <p><?= $current['condition']?></p>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row m-3 justify-content-center">
             <!-- forecast -->
             <?php foreach($forecast as $day) : ?>
-            <div class="col-2 border border-warning rounded-1 m-2 text-center p-3">
+            <div class="col-sm-2 border border-warning m-2 rounded-1 text-center p-3">
                 <img src="<?= $day['condition_icon'] ?>">
                 <h3 class="fw-lighter"><?= $day['condition'] ?></h3>
                 <div class="text-center">
