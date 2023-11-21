@@ -5,8 +5,12 @@ require_once '../inc/api.php';
 
 $cookie_name = "theme";
 $cookie_value = "dark";
-setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-  
+
+if(!isset($_COOKIE['theme'])) {
+    setcookie($cookie_name, $cookie_value, strtotime( '+30 days' ), "/");
+    $_COOKIE['theme'] = 'dark';
+}
+
 $days = 5;
 $city = "Lisbon";
 
