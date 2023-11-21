@@ -105,6 +105,9 @@ foreach($data['forecast']['forecastday'] as $day){
             <div class="col-auto">
                 <input class="btn btn-secondary" type="submit" value="Selecione tema">
             </div>
+            <div class="col-auto ms-5 justify-content-center text-center">
+                <a class="btn btn-secondary" href="/blog.php">Blog</a>
+            </div>
         </form>
     </div>
 
